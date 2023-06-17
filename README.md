@@ -5,15 +5,15 @@
 ### Setup
 The script has been tested running under Python 3.6.5, with the following packages installed (along with their dependencies):
 
-pytorch 1.6.0+cu101
+`pytorch 1.6.0+cu101`
 
-torch-geometric 1.6.3
+`torch-geometric 1.6.3`
 
-rdkit 2020.09.1.0
+`rdkit 2020.09.1.0`
 
-networkx 2.3
+`networkx 2.3`
 
-scikit-learn 0.20.3
+`scikit-learn 0.20.3`
 
 You can install the dependency packages with the following command:
 
