@@ -40,43 +40,33 @@ For the node classiciation pre-training dataset, the original datasets are store
 ### Usage: How to run the code
     python Main.py -h
 
-    usage: Main.py [-h][--data-name] [--save-name] [--max-train-num] [--no-cuda] [--missing-ratio] 
-    [--split-ratio] [--neg-pos-ratio] [--use-attribute] [--use-embedding] [--embedding-size] 
-    [--lazy-subgraph] [--max-nodes-per-hop] [--num-walks] [--multi-subgraph] [--reg-smooth] 
-    [--smooth-coef] [--trainable-noise] [--early-stop] [--early-stop-patience] [--learning-rate]
-
+    usage: Main.py [-h][--pre-data][--down-data][--pre-path][--down-path][--save-path]
+    [--device][--seed][--method][--func][--r][--domain-num][--epoch][--learning-rate][--weight-decay]
     optional arguments:
       -h, --help                show this help message and exit
-      --data-name               str, select the dataset. 
-      --save-name               str, the name of saved model. 
-      --max-train-num           int, the maximum number of training links.
-      --no-cuda                 bool, whether to disables CUDA training.
+      --pre-data                str, pretrain data name. 
+      --down-data               str, downstream data name. 
+      --pre-path                str, file path to load pre-training data.
+      --down-path               str, file path to load downstream data.
+      --save-path               str, file path to save graphon.
+      --device                  int, which gpu to use if any (default: 0).
       --seed                    int, set the random seed.
-      --test-ratio              float, the ratio of test links.
-      --missing-ratio           float, the ratio of missing links.
-      --split-ratio             str, the split rate of train, val and test links
-      --neg-pos-ratio           float, the ratio of negative/positive links
-      --use-attribute           bool, whether to utilize node attribute. 
-      --use-embedding           bool, whether to utilize the information from node2vec node embeddings.
-      --embedding-size          int, the embedding size of node2vec
-      --lazy-subgraph           bool, whether to use lazy subgraph extraction.
-      --max-nodes-per-hop       int, the upper bound the number of nodes per hop when performing Lazy Subgraph Extraction. 
-      --num-walks               int, thenumber of walks for each node when performing Lazy Subgraph Extraction. 
-      --multi-subgraph          int, the number of subgraphs to extract for each queried nodes
-      --reg-smooth              bool, whether to use auxiliary denoising regularization.
-      --smooth-coef             float, the coefficient of auxiliary denoising regularization. 
-      --trainable-noise         bool, whether to let the Noisy link detection layer trainable.
-      --early-stop              bool, whether to use early stopping.
-      --early-stop-patience     int, the patience for early stop.
-      --learning-rate           float, the learning rate. 
+      --method                  str, method to estimate graphon.
+      --func                    bool, whether use graphon or step function.
+      --r                       str, the resolution of graphon.
+      --domain-num              int, the number of domains of pre-training data
+      --epoch                   int,  number of trails to fit the final graphon
+      --learning-rate           float, the learning rate
+      --weight-decay            float, weight decay
+      
 ### Demo
 To run the node_classification, see example below
 
-`python node_classification/estimate_feasiblity.py --pre_data imdb_facebook --down_data h-index`
+`python node_classification/estimate_feasiblity.py --pre-data imdb_facebook --down-data h-index`
 
 To run the graph_classification, see example below
 
-`python graph_classification/estimate_feasiblity.py --pre_data zinc_standard_agent --split_num 2 --split_ids 01 --down_data bbbp`
+`python graph_classification/estimate_feasiblity.py --pre-data zinc_standard_agent01 --down-data bbbp`
 
 
 
