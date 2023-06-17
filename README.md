@@ -1,7 +1,7 @@
 # When to Pre-Train Graph Neural Networks? From Data Generation Perspective!
 ### About
  This project is the implementation of paper “When to Pre-Train Graph Neural Networks? From Data Generation Perspective!" accepted by KDD2023. 
-![](W2PGNN/fig_framwork(1).pdf)
+![](https://github.com/caoyxuan/W2PGNN/blob/main/fig_framework.png)
 
 ### Abstract
 In recent years, graph pre-training has gained significant attention, focusing on acquiring transferable knowledge from unlabeled graph data to improve downstream performance. 
