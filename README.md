@@ -38,7 +38,7 @@ For the graph classiciation pre-training and downstream dataset, download from p
 For the node classiciation pre-training dataset, the original datasets are stored in data.bin. And the datasets can be download through pre-training data, unzip it, and put it under node_classification/data/dataset/
 
 ### Usage: How to run the code
-    python Main.py -h
+    python graph_classification/estimate_feasiblity.py -h
 
     usage: Main.py [-h][--pre-data][--down-data][--pre-path][--down-path][--save-path]
     [--device][--seed][--method][--func][--r][--domain-num][--epoch][--learning-rate][--weight-decay]
