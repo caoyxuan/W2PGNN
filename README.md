@@ -18,4 +18,27 @@ scikit-learn 0.20.3
 You can install the dependency packages with the following command:
 
 `pip install -r requirements.txt`
+
+### File Folders
+* node classification: contains the code of estimating graph pre-training feasibility and pre-traing&fine-tuning data for graph classification
+
+* graph classification: contains the code of estimating graph pre-training feasibility and pre-traing&fine-tuning data for node classification
+
+* utils:contains the code of models.
+
 ### Dataset
+For the graph classiciation pre-training and downstream dataset, download from pre-training data, unzip it, and put it under graph_classification/data/dataset/
+
+For the node classiciation pre-training dataset, the original datasets are stored in data.bin. And the datasets can be download through pre-training data, unzip it, and put it under node_classification/data/dataset/
+
+### Usage: How to run the code
+To run the node_classification, see example below
+
+`python node_classification/estimate_feasiblity.py --pre_data imdb_facebook --down_data h-index`
+
+To run the graph_classification, see example below
+
+`python graph_classification/estimate_feasiblity.py --pre_data zinc_standard_agent --split_num 2 --split_ids 01 --down_data bbbp`
+
+
+
