@@ -11,7 +11,7 @@ This paper introduces a generic framework W2PGNN to answer the crucial question 
 ### Setup
 The script has been tested running under Python 3.6.5, with the following packages installed (along with their dependencies):
 
-`pytorch 1.6.0+cu101`
+`pytorch 1.6.0`
 
 `torch-geometric 1.6.3`
 
