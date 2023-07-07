@@ -29,10 +29,10 @@ args = parser.parse_args()
 def construct_basis(args):
     dataname = args.pre_data
     file_path = args.file_path
-    file_path = "/data/srtpgroup/chem/dataset/"
+    file_path = "/data/chem/dataset/"
     save_path = args.save_path
     load_path = args.load_path
-    load_path = "/data/srtpgroup/chem/dataset/"
+    load_path = "/data/chem/dataset/"
     method = args.method
     predata_splits = ""
     if args.pre_data == "zinc_standard_agent":
