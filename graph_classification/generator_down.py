@@ -7,7 +7,7 @@ import numpy as np
 import torch
 import argparse
 parser = argparse.ArgumentParser(description='')
-parser.add_argument('--dataset', type=str, default="bace",
+parser.add_argument('--dataset', type=str, default="",
                     help='pretrain data')
 parser.add_argument('--file_path', type=str, default="data/dataset/", help="Path to save raw data.")
 parser.add_argument('--downgraph_path', type=str, default=None, help="Path to save down_graphs.")
@@ -24,13 +24,12 @@ args = parser.parse_args()
 def estimate_generator_down(args,datas=None,down_path=None):
     if down_path is None:
         file_path = args.file_path
-        file_path = "/data/srtpgroup/chem/dataset/"
         dataname = args.dataset
         save_path = args.save_path
         method = args.method
         dataset = MoleculeDataset(file_path + dataname, dataset=dataname)
         datas=dataset
-        torch.save(datas,"/home/caoyuxuan/kdd/graph_classification/data/demo/dataset/down/"+args.dataset+".pt")
+        torch.save(datas,"data/demo/dataset/down/"+args.dataset+".pt")
     else:
         datas = torch.load(down_path)
     graphons, stepfuncs = [], []
