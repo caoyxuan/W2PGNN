@@ -86,16 +86,16 @@ def construct_pre_data(args):
         torch.cuda.manual_seed_all(args.runseed)
     if args.dataset == "zinc_standard_agent":
         data_pre = "data/"
-        data_pre = "/data/srtpgroup/chem/"
-        save_path = "data/demo/"
-        dataset = MoleculeDataset(data_pre + "dataset/" + args.dataset, dataset=args.dataset)[:1000]
+        data_pre = "/data/chem/"
+        save_path = "data/demo2/"
+        dataset = MoleculeDataset(data_pre + "dataset/" + args.dataset, dataset=args.dataset)[:200]
         print(dataset)
         smiles_list = pd.read_csv(data_pre + 'dataset/' + args.dataset + '/processed/smiles.csv', header=None)[
             0].tolist()
         envs = random_scaffold_split(dataset, smiles_list, null_value=0, frac_train=0.8, frac_valid=0.1, frac_test=0.1)
         for i in tqdm(range(len(envs))):
             np.save(save_path + "dataset/"+args.dataset+"/split"+str(i)+".npy",np.array(envs[i]))
-            torch.save(dataset[np.array(envs[i]).tolist()],save_path + "dataset/"+args.dataset+"/split"+str(i)+".pt")
+            torch.save(dataset[np.array(envs[i]).tolist()],save_path + "dataset/"+args.dataset+"/domain"+str(i)+".pt")
 if __name__ == "__main__":
     construct_pre_data(args)
 # datas = torch.load(save_path + "dataset/"+args.dataset+"/split"+str(i)+".pt")
