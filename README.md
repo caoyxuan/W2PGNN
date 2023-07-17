@@ -49,20 +49,22 @@ For the node classiciation pre-training dataset, the original datasets are store
       --pre-path                str, file path to load pre-training data.
       --down-path               str, file path to load downstream data.
       --save-path               str, file path to save graphon.
+      --file-path               str, Path to save raw data.
       --device                  int, which gpu to use if any (default: 0).
       --seed                    int, set the random seed.
       --method                  str, method to estimate graphon.
       --func                    bool, whether use graphon or step function.
       --r                       str, the resolution of graphon.
       --domain-num              int, the number of domains of pre-training data
-      --epoch                   int,  number of trails to fit the final graphon
+      --epochs                  int,  number of trails to fit the final graphon
       --learning-rate           float, the learning rate
       --weight-decay            float, weight decay
+      --variant                 str, variant of feasibility
       
 ### Demo
 To run the node_classification, see example below
 
-`python node_classification/estimate_feasiblity.py --pre-data imdb_facebook --down-data h-index`
+`python node_classification/estimate_feasiblity.py --pre-datasets imdb facebook --down-data h-index`
 
 To run the graph_classification, see example below
 
