@@ -41,10 +41,13 @@ args = parser.parse_args()
 
 def construct_basis(datas,args):
     graphs = []
-    for j in range(len(datas)):
-        matrix_graph = torch_geometric.utils.to_scipy_sparse_matrix(datas[j].edge_index,
-                                                                    num_nodes=datas[j].num_nodes).toarray()
-        graphs.append(matrix_graph)
+    if isinstance(datas[0],torch_geometric.data.data.Data):
+        for j in range(len(datas)):
+            matrix_graph = torch_geometric.utils.to_scipy_sparse_matrix(datas[j].edge_index,
+                                                                        num_nodes=datas[j].num_nodes).toarray()
+            graphs.append(matrix_graph)
+    elif isinstance(datas[0],np.ndarray):
+        graphs = datas
     step_func, non_para_graphon = estimate_graphon(np.array(graphs), method=args.method, args=args)
     return step_func,non_para_graphon
 def estimate_feasibility(pre_funcs, down_graphon,alpha=True):
@@ -68,7 +71,6 @@ def estimate_feas(args):
     down_func, down_graphon = estimate_generator_down(args, down_data, down_path)
     #load pre-train data
     pre_path = args.file_path + "pre/" + args.pre_data
-    pre_datas,graph_ids,topo_graph = [],[],[]
     if args.variant == "topo":
         datas,topo_graphs = [],[]
         for i in range(args.domain_num):
@@ -96,6 +98,7 @@ def estimate_feas(args):
         datas = []
         for i in range(args.domain_num):
             datas +=  torch.load(pre_path + "/domain" + str(i) + ".pt")
+        print(type(datas[0]))
         integr_func , integr_graphon = construct_basis(datas, args)
         mean_dis_gw = estimate_feasibility(integr_graphon, down_graphon, alpha=False)
         print("integrate feasibility : {}".format(mean_dis_gw))
