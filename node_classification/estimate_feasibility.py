@@ -71,7 +71,7 @@ def estimate_feas(args):
     down_func, down_graphon = estimate_generator_down(args, down_path)
     #load pre-train data
     pre_path = args.file_path + "pre/"
-    get_subgraphs(args.pre_datasets, pre_path,ego_hops=2,node_threshold=args.node_threshold)
+    get_subgraphs(args.pre_datasets, pre_path,args.load_path,ego_hops=2,node_threshold=args.node_threshold)
     if args.variant == "topo":
         datas,topo_graphs = [],[]
         for i in range(args.domain_num):
